@@ -571,3 +571,49 @@ font-weight:400;
     opacity:0;
 
 }
+
+#finalGreeting{
+
+    opacity:0;
+
+    transition:opacity 2s ease;
+
+    margin-top:70px;
+
+    text-align:center;
+
+}
+
+#finalGreeting.show{
+
+    opacity:1;
+
+}
+
+#finalGreeting h2{
+
+    font-size:2.2rem;
+
+    color:white;
+
+    margin-bottom:20px;
+
+}
+
+#finalGreeting p{
+
+    color:white;
+
+    font-size:1.2rem;
+
+    line-height:1.8;
+
+}
+
+.signature{
+
+    margin-top:35px;
+
+    font-style:italic;
+
+}

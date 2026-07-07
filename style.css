@@ -1,0 +1,573 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+font-family:'Poppins',sans-serif;
+
+overflow:hidden;
+
+height:100vh;
+
+background:
+linear-gradient(
+180deg,
+#8ED8FF 0%,
+#BCEBFF 40%,
+#EAF8FF 100%);
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+color:white;
+
+}
+
+/* SKY */
+
+#sky{
+
+position:fixed;
+inset:0;
+overflow:hidden;
+z-index:0;
+
+}
+
+/* MOON */
+
+.moon{
+
+position:absolute;
+
+top:70px;
+right:90px;
+
+width:110px;
+height:110px;
+
+border-radius:50%;
+
+background:white;
+
+box-shadow:
+0 0 40px rgba(255,255,255,.7),
+0 0 100px rgba(255,255,255,.4);
+
+animation:floatMoon 7s ease-in-out infinite;
+
+}
+
+@keyframes floatMoon{
+
+0%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0);}
+
+}
+
+/* COVER */
+
+#cover{
+
+position:absolute;
+
+width:100%;
+height:100%;
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+
+z-index:5;
+
+}
+
+.card{
+
+background:white;
+
+width:min(800px,90%);
+
+padding:80px;
+
+border-radius:30px;
+
+text-align:center;
+
+box-shadow:
+0 25px 70px rgba(0,0,0,.15);
+
+}
+
+.small-title{
+
+letter-spacing:6px;
+
+font-size:16px;
+
+color:#5AA9E6;
+
+margin-bottom:20px;
+
+}
+
+.card h1{
+
+font-size:72px;
+
+color:#2F5D8A;
+
+margin-bottom:10px;
+
+}
+
+.card h2{
+
+font-size:34px;
+
+font-weight:400;
+
+color:#4F7EA8;
+
+margin-bottom:45px;
+
+}
+
+button{
+
+border:none;
+
+padding:18px 40px;
+
+border-radius:50px;
+
+background:#63B9F7;
+
+color:white;
+
+font-size:20px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+transform:translateY(-4px);
+
+box-shadow:0 15px 30px rgba(99,185,247,.35);
+
+}
+
+/* STORY */
+
+#story{
+
+display:none;
+
+z-index:10;
+
+}
+
+.book{
+
+background:#fffdf8;
+
+width:min(900px,90vw);
+
+padding:70px;
+
+border-radius:20px;
+
+max-height:80vh;
+
+overflow-y:auto;
+
+scroll-behavior:smooth;
+
+box-shadow:
+0 25px 70px rgba(0,0,0,.18);
+
+color:#333;
+
+}
+
+.chapter-number{
+
+color:#5AA9E6;
+
+letter-spacing:3px;
+
+margin-bottom:10px;
+
+}
+
+.chapter-title{
+
+font-size:54px;
+
+color:#2F5D8A;
+
+margin-bottom:35px;
+
+}
+
+#storyText::after{
+
+content:"|";
+
+animation:blink .8s infinite;
+
+color:#2F5D8A;
+
+margin-left:2px;
+
+}
+
+/* CLOUDS */
+
+.cloud{
+
+position:absolute;
+
+background:rgba(255,255,255,.45);
+
+border-radius:100px;
+
+filter:blur(18px);
+
+}
+
+.cloud1{
+
+width:220px;
+height:80px;
+
+top:120px;
+
+animation:moveCloud 45s linear infinite;
+
+}
+
+.cloud2{
+
+width:320px;
+height:100px;
+
+top:280px;
+
+animation:moveCloud 60s linear infinite;
+
+animation-delay:-20s;
+
+}
+
+.cloud3{
+
+width:260px;
+height:90px;
+
+top:450px;
+
+animation:moveCloud 50s linear infinite;
+
+animation-delay:-10s;
+
+}
+
+@keyframes moveCloud{
+
+from{
+
+transform:translateX(-400px);
+
+}
+
+to{
+
+transform:translateX(calc(100vw + 400px));
+
+}
+
+}
+
+/* SPARKLES */
+
+.sparkle{
+
+position:absolute;
+
+width:4px;
+height:4px;
+
+background:white;
+
+border-radius:50%;
+
+opacity:.7;
+
+animation:twinkle infinite alternate;
+
+}
+
+@keyframes twinkle{
+
+from{
+
+opacity:.2;
+transform:scale(.7);
+
+}
+
+to{
+
+opacity:1;
+transform:scale(1.5);
+
+}
+
+}
+
+#nextPage{
+
+display:none;
+
+}
+
+/* PAGE TRANSITION */
+
+.book{
+
+transition:opacity .35s ease,
+transform .35s ease;
+
+}
+
+.book.fade{
+
+opacity:0;
+
+transform:translateY(20px);
+
+
+}
+
+button:disabled{
+
+opacity:.55;
+
+cursor:not-allowed;
+
+}
+
+#pageNumber{
+
+    margin-top:30px;
+
+    text-align:right;
+
+    color:#888;
+
+    font-size:15px;
+
+    font-style:italic;
+
+}
+
+#cursor{
+
+    display:none;
+
+    font-size:24px;
+
+    color:#2F5D8A;
+
+    animation:blink .8s infinite;
+
+}
+
+@keyframes blink{
+
+    0%,50%{
+
+        opacity:1;
+
+    }
+
+    51%,100%{
+
+        opacity:0;
+
+    }
+
+}
+
+/* ======================
+ENDING SCREEN
+====================== */
+
+#ending{
+
+position:fixed;
+
+inset:0;
+
+display:none;
+
+justify-content:center;
+
+align-items:center;
+
+text-align:center;
+
+z-index:100;
+
+background:rgba(255,255,255,.05);
+
+backdrop-filter:blur(6px);
+
+}
+
+.ending-content{
+
+color:white;
+
+animation:fadeIn 1.5s ease;
+
+}
+
+#endingText{
+
+font-size:34px;
+
+line-height:1.8;
+
+margin-bottom:40px;
+
+white-space:pre-line;
+
+}
+
+#lookUpButton{
+
+display:none;
+
+}
+
+@keyframes fadeIn{
+
+from{
+
+opacity:0;
+
+transform:translateY(30px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+/* ======================
+FINAL SKY
+====================== */
+
+#finalSky{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    z-index:120;
+
+    color:white;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:opacity 2s ease;
+
+}
+
+#finalSky.show{
+
+    opacity:1;
+
+}
+
+.final-message{
+
+animation:fadeIn 2s ease;
+
+max-width:700px;
+
+padding:40px;
+
+}
+
+#verse{
+
+font-size:34px;
+
+line-height:1.8;
+
+font-style:italic;
+
+margin-bottom:20px;
+
+}
+
+#reference{
+
+font-size:18px;
+
+opacity:.8;
+
+margin-bottom:40px;
+
+}
+
+.final-message h2{
+
+font-size:40px;
+
+font-weight:400;
+
+}
+
+#ending{
+
+    transition:opacity 1.5s ease;
+
+}
+
+#ending.fadeOut{
+
+    opacity:0;
+
+}

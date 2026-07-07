@@ -712,50 +712,6 @@ function closeBook(){
 
     endingText.innerHTML = "";
 
-    const messages = [
-
-        "Before you go...",
-
-        "I have one last thing.",
-
-        "Thank you\nfor being you.",
-
-        "Never forget...\n\nyour identity\nhas always been\nfound in Christ."
-
-    ];
-
-    let current = 0;
-
-    function showMessage(){
-
-        if(current >= messages.length){
-
-            lookUpButton.style.display = "inline-block";
-
-            return;
-
-        }
-
-        endingText.innerHTML = messages[current];
-
-        current++;
-
-        setTimeout(showMessage, 2500);
-
-    }
-
-    showMessage();
-
-}
-
-function closeBook(){
-
-    story.style.display = "none";
-
-    ending.style.display = "flex";
-
-    endingText.innerHTML = "";
-
     lookUpButton.style.display = "none";
 
     const messages = [
@@ -802,6 +758,14 @@ lookUpButton.onclick = () => {
         ending.style.display = "none";
 
         finalSky.classList.add("show");
+
+        setTimeout(() => {
+
+            document
+                .getElementById("finalGreeting")
+                .classList.add("show");
+
+        },3000);
 
     },1500);
 
